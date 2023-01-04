@@ -78,7 +78,10 @@ namespace Cast.NET
         public CastArrayProperty(List<T> values)
         {
             Identifier = Identifiers[typeof(T)];
-            Values = new(values);
+            Values = new(values.Capacity);
+
+            if (values.Count != 0)
+                Values.AddRange(values);
         }
 
         /// <summary>
